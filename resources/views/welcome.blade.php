@@ -53,8 +53,11 @@ $user = Auth::user();
 
 		@if(isset($micropost))
 		<?php echo 'debug id---'."$micropost->id"; ?>
-		<?php echo 'debug gettype---'."gettype($micropost);" ?>
-		<?php echo 'debug getclass---'."get_class($micropost);" ?>
+		<br>
+		<?php echo gettype($micropost) ?>
+		<br>
+		<?php echo is_object($micropost) ?>
+		<br>
 		<?php echo 'debug array---'."$micropost[id]" ?>
 
 		{!! Form::model($micropost, ['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}

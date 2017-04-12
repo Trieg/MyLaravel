@@ -95,17 +95,19 @@ class MicropostsController extends Controller {
 	 */
 	public function destroy($id) {
 
-		if(isset($id)){
+		
 		$instance = Micropost::find($id);
-
+		
+		
 		if (\Auth::user()->id === $instance->user_id) {
+		
 			$instance->delete();
 		}
 		
-		}
+		
 
-
-		return redirect()->back();
+		return redirect('/');
+		//return redirect()->back();
 	}
 
 }

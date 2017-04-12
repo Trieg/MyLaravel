@@ -1,8 +1,5 @@
 <?php
 
-Route::get('/home', function () {
-	return view('/');
-});
 
 //---------------------
 //Route::method(URL, Controllerのpath,)->name(view側で使える、ルート名称)
@@ -19,7 +16,6 @@ Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 
 
 //---------------------
-
 
 Route::get('/', 'WelcomeController@index');
 

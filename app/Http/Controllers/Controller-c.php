@@ -91,6 +91,8 @@ class ContTask extends Controller
         $TaskContent->status = $request->status;    // colum対応
         $TaskContent->save();
 		
+		//App\Message::where('id', 1)->update(['content' => 'updated'])
+		
         //view無し
         return redirect('/');
     }

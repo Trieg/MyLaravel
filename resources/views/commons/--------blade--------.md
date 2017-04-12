@@ -31,9 +31,17 @@ pathの記述パターン
 
 {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '5']) !!}
 
-null or old('content')
+null or null(model) ofold('content')
 
 
+
+編集
+{!! Form::model($v_TaskContent, ['route' => ['ViTask.update', $v_TaskContent->id], 'method' => 'put']) !!}
+削除
+{!! Form::model($v_TaskContent, ['route' => ['ViTask.destroy', $v_TaskContent->id], 'method' => 'delete']) !!}
+
+'method' => 'put'
+'method' => 'delete'
 
 #リンクを探す
 'method' => 'delete

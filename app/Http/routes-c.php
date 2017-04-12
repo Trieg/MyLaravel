@@ -69,11 +69,11 @@ Route::get('user/{name?}', function ($name = null) {
 //下記のコードの{id}は、連想配列のkeyである。
 
 //
-//Route::get('messages/{id}', 'MessagesController@show');
-//Route::post('messages', 'MessagesController@store');
-//Route::put('messages/{id}', 'MessagesController@update');
-//Route::delete('messages/{id}', 'MessagesController@destroy');
-//Route::get('messages', 'MessagesController@index');
-//Route::get('messages/create', 'MessagesController@create');
-//Route::get('messages/{id}/edit', 'MessagesController@edit');
+//get@show
+//post@store
+//put@update
+//delete@destroy
+//get@index
+//get@create
+//get@edit
 //

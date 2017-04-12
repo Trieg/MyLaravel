@@ -1,14 +1,16 @@
 
-
-
 <ul class="media-list">
 
+	
 	@foreach ($microposts as $micropost)
 
 	<?php
+	/*
+	var_dump($microposts);
 	
 	//id（複数）インスタンス
 	$user = $micropost->user;
+	 */
 	?>
 
     <li class="media">
@@ -37,13 +39,24 @@
 
             <div>
 
-				<?php //destoroy ?>
+				<?php //destoroy  ?>
 
                 @if (Auth::user()->id == $micropost->user_id)
 
 				{!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
 				{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
 				{!! Form::close() !!}
+				
+				@endif
+
+				<?php //update  ?>
+
+                @if (Auth::user()->id == $micropost->user_id)
+
+				{!! Form::open(['route' => ['microposts.edit', $micropost->id], 'method' => 'get']) !!}
+				{!! Form::submit('Update', ['class' => 'btn btn-info btn-xs']) !!}
+				{!! Form::close() !!}
+
 
                 @endif
             </div>

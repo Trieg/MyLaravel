@@ -52,13 +52,12 @@ $user = Auth::user();
 		<?php //destoroy  ?>
 
 		@if(isset($micropost))
-		<?php echo 'debug id---'."$micropost->id"; ?>
+
+		<?php //echo 'debug id---'."$micropost->id"; ?>
 		<br>
-		<?php echo gettype($micropost) ?>
-		<br>
-		<?php echo is_object($micropost) ?>
-		<br>
-		<?php echo 'debug array---'."$micropost[id]" ?>
+		<?php //echo gettype($micropost) ?>
+		<?php //echo is_object($micropost) ?>
+		<?php //echo 'debug array---'."$micropost[id]" ?>
 
 		{!! Form::model($micropost, ['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
 		{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}

@@ -7,21 +7,21 @@
 
 <?php
 /*
-if (isset($bool)) {
-	var_dump($instance);
-}
-*/
+  if (isset($bool)) {
+  var_dump($instance);
+  }
+ */
 $user = Auth::user();
 ?>
 
 <div class="row">
-<aside class="col-xs-4" id="title">
-	
-	@if(isset($bool))
+	<aside class="col-xs-4" id="title">
 
-		
+		@if(isset($bool))
+
+
 		{!! Form::model($micropost, ['route' => ['microposts.update', $micropost->id], 'method' => 'put']) !!}
-		
+
 		<?php //echo $micropost->id; ?>
 
 		<div class="form-group">
@@ -48,11 +48,23 @@ $user = Auth::user();
 		{!! Form::submit('Update', ['class' => 'btn btn-primary btn-info']) !!}
 		{!! Form::close() !!}
 
-	@else
-
-	
-		{!! Form::open(['route' => 'microposts.store']) !!}
 		
+		<?php //destoroy  ?>
+
+		@if(isset($micropost))
+		<?php echo "$micropost->id"; ?>
+
+		{!! Form::model($micropost, ['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
+		{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+		{!! Form::close() !!}
+		@endif
+
+
+		@else
+
+
+		{!! Form::open(['route' => 'microposts.store']) !!}
+
 
 		<div class="form-group">
 			{!! Form::label('title', 'タスク名:') !!}
@@ -79,7 +91,7 @@ $user = Auth::user();
 		{!! Form::close() !!}
 
 
-	@endif
+		@endif
 	</aside>
 
 	<aside class="col-xs-8">

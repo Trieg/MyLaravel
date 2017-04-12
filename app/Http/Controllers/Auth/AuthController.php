@@ -17,7 +17,7 @@ class AuthController extends Controller
 
     protected $redirectTo = '/'; //追加
 	
-    protected $loginPath = '/login'; // 追加
+    protected $loginPath = '/'; // 追加
 	
 	
     /*

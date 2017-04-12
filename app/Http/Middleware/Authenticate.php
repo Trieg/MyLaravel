@@ -31,18 +31,20 @@ class Authenticate {
 	 * @param  \Closure  $next
 	 * @return mixed
 	 */
+	
 //authが呼ばれた時に、毎回呼ばれるメソッド
 //app/Http/Middleware/Authenticate.php
 
 	public function handle($request, Closure $next) {
+		
 		//ログイン無しの場合、 $this->auth->guest() が true
+		
 		if ($this->auth->guest()) {
 
-
 			if ($request->ajax()) {
-				return redirect()->guest(route('login.get')); //修正
+				return redirect()->guest(route('/')); //修正
 			} else {
-				return redirect()->guest(route('login.get')); //修正
+				return redirect()->guest(route('/')); //修正
 			}
 		}
 

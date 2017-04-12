@@ -15,7 +15,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 class AuthController extends Controller
 {
 
-    protected $redirectTo = 'index.get';
+    protected $redirectTo = '/';
 	
     protected $loginPath = '/login'; 
 	

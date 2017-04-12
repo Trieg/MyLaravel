@@ -21,7 +21,7 @@ Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 //---------------------
 
 
-Route::get('/', 'WelcomeController@index')->name('index.get');
+Route::get('/', 'WelcomeController@index');
 
 //---------------------
 //ログイン認証付きのルーティング

@@ -47,11 +47,15 @@ $user = Auth::user();
 		{!! Form::submit('Update', ['class' => 'btn btn-primary btn-info']) !!}
 		{!! Form::close() !!}
 
+		@endif
 		
 		<?php //destoroy  ?>
 
 		@if(isset($micropost))
-		<?php echo "$micropost->id"; ?>
+		<?php echo 'debug id---'."$micropost->id"; ?>
+		<?php echo 'debug gettype---'."gettype($micropost);" ?>
+		<?php echo 'debug getclass---'."get_class($micropost);" ?>
+		<?php echo 'debug array---'."$micropost[id]" ?>
 
 		{!! Form::model($micropost, ['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
 		{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
@@ -59,8 +63,8 @@ $user = Auth::user();
 		@endif
 
 
-		@else
-
+		
+		@if(! isset($bool))
 
 		{!! Form::open(['route' => 'microposts.store']) !!}
 
@@ -89,8 +93,8 @@ $user = Auth::user();
 		{!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
 		{!! Form::close() !!}
 
-
 		@endif
+		
 	</aside>
 
 	<aside class="col-xs-8">

@@ -42,9 +42,9 @@ class Authenticate {
 		if ($this->auth->guest()) {
 
 			if ($request->ajax()) {
-				return redirect()->guest(route('index.get')); //修正
+				return redirect()->guest(route('/')); //修正
 			} else {
-				return redirect()->guest(route('index.get')); //修正
+				return redirect()->guest(route('/')); //修正
 			}
 		}
 

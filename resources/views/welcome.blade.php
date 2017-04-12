@@ -1,7 +1,6 @@
 @extends('layouts.app')
-
-
 @section('content')
+
 
 @if (Auth::check())
 
@@ -107,14 +106,11 @@ $user = Auth::user();
 <div class="center jumbotron">
 
 	<div class="text-center">
+		
 		<h1>Welcome to the Microposts</h1>
 
-		<?php
-		//1 viewのpath（routeのnameでも通る）、2 コンテンツ、
-		//3 URLの末尾「?」を「第3引数名」で分岐、4 ['class' => 'btn btn-primary']) 
-		?>
-
 		{!! link_to_route('signup.get', 'Sign up now!', null, ['class' => 'btn btn-lg btn-primary']) !!}
+		
 	</div>
 
 </div>

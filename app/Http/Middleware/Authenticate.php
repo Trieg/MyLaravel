@@ -39,14 +39,13 @@ class Authenticate {
 		
 		//ログイン無しの場合、 $this->auth->guest() が true
 		
-		if ($this->auth->guest()) {
-
-			if ($request->ajax()) {
-				return redirect()->guest(route('/')); //修正
-			} else {
-				return redirect()->guest(route('/')); //修正
-			}
-		}
+        if ($this->auth->guest()) {
+            if ($request->ajax()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest(route('login.get'));  // 修正
+            }
+        }
 
 		return $next($request);
 	}

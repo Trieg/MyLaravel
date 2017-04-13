@@ -17,6 +17,38 @@
 link_to(Applications / MAMP / htdocs / l51_003 / microposts / app / Providers / RouteServiceProvider . php);
 
 //--------------------------------------------------------------------------
+//routeのif分岐
+
+$defaultRoutes = function(){
+    Route::get('/hogehoge', 'HogeController@index');
+};
+
+if (strpos(url(), config('app.test_domain'))) {
+    Route::group(['middleware' => 'auth'], $defaultRoutes);
+} else {
+    $defaultRoutes();
+}
+
+//内容的にはこちら、上記はclosureかけてある
+
+if (strpos(url(), config('app.test_domain'))) {
+    Route::group(['middleware' => 'auth'], function () {
+        defaultRoutes();
+    });
+} else {
+    defaultRoutes();
+}
+
+//通常のルート
+function defaultRoutes ()
+{
+    Route::get('/hogehoge', 'HogeController@index');
+}
+
+
+//--------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------
 //「/」をindexアクションと呼ぶ
 Route::get('/', function () {
 	return view('welcome');

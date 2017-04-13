@@ -8,44 +8,70 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
-class Handler extends ExceptionHandler
-{
-    /**
-     * レポートしない例外タイプのリスト
-     *
-     * @var array
-     */
-    protected $dontReport = [
-        HttpException::class,
-        ModelNotFoundException::class,
-    ];
+class Handler extends ExceptionHandler {
 
-    /**
-     * 例外をレポート、もしくはログ
-     *
-     * ここはSentryやBugsnagなどに例外を送るために良い場所
-     *
-     * @param  \Exception  $e
-     * @return void
-     */
-    public function report(Exception $e)
-    {
-        return parent::report($e);
-    }
+	/**
+	 * レポートしない例外タイプのリスト
+	 *
+	 * @var array
+	 */
+	protected $dontReport = [
+		HttpException::class,
+		ModelNotFoundException::class,
+	];
 
-    /**
-     * HTTPレスポンスに対応する例外をレンダー
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
-     * @return \Illuminate\Http\Response
-     */
-    public function render($request, Exception $e)
-    {
-        if ($e instanceof ModelNotFoundException) {
-            $e = new NotFoundHttpException($e->getMessage(), $e);
-        }
+	/**
+	 * 例外をレポート、もしくはログ
+	 *
+	 * ここはSentryやBugsnagなどに例外を送るために良い場所
+	 *
+	 * @param  \Exception  $e
+	 * @return void
+	 */
+	public function report(Exception $e) {
+		return parent::report($e);
+	}
 
-        return parent::render($request, $e);
-    }
+	/**
+	 * HTTPレスポンスに対応する例外をレンダー
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Exception  $e
+	 * @return \Illuminate\Http\Response
+	 */
+	
+	
+	public function render($request, Exception $exception) {
+
+		if ($exception instanceof TokenMismatchException) {
+			// セッションタイムアウト
+			return redirect()->to('/');
+		}
+
+		if (get_class($exception) == 'Illuminate\Session\TokenMismatchException') {
+			// get_class()で、CSRFトークンと、セッションタイムアウト
+			
+			session()->flash('csrfError', true);
+			return redirect()->to('/');
+		}
+		return parent::render($request, $exception);
+	}
+	
+	//view側の処理
+	//@if(session()->has('csrfError'))
+    //<p>お好みのエラーメッセージ</p>
+	//@endif
+	
+
+	/* デフォルト
+	 * 	
+	 * public function render($request, Exception $e) {
+
+	  if ($e instanceof ModelNotFoundException) {
+	  $e = new NotFoundHttpException($e->getMessage(), $e);
+	  }
+
+	  return parent::render($request, $e);
+	  }
+	 */
 }

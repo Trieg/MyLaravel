@@ -1,6 +1,6 @@
 <?php
 
-
+//hearしたよ
 //---------------------
 //Route::method(URL, Controllerのpath,)->name(view側で使える、ルート名称)
 // signup（登録）

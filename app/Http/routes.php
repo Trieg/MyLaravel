@@ -1,6 +1,9 @@
 <?php
 
 //hearしたよ
+//
+//URLの生成は、view側から、単一のstringを{}に渡すしかない
+//
 //---------------------
 //Route::method(URL, Controllerのpath,)->name(view側で使える、ルート名称)
 // signup（登録）

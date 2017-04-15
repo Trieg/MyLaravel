@@ -7,10 +7,18 @@
  */
 
 /**
- * Description of todo
+ * Description of function
  *
  * @author MJ
  */
-class todo {
-	//put your code here
+
+
+$debug_bool = true;
+
+
+class aaa{
+	
+
+
+
 }

@@ -113,10 +113,11 @@ return [
         /*
          * Laravelフレームワークサービスプロバイダ
          */
-Barryvdh\Debugbar\ServiceProvider::class,
+
 Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 Collective\Html\HtmlServiceProvider::class,
 		
+Barryvdh\Debugbar\ServiceProvider::class,
 Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
 
         Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
@@ -165,10 +166,12 @@ Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
     */
 
     'aliases' => [
+		
+'Helper' => App\Helpers\Helper::class,
 'Form' => Collective\Html\FormFacade::class,
 'Html' => Collective\Html\HtmlFacade::class,
-'Debugbar' => Barryvdh\Debugbar\Facade::class,
 		
+'Debugbar' => Barryvdh\Debugbar\Facade::class,
 'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
 
         'App'       => Illuminate\Support\Facades\App::class,

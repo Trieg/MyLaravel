@@ -8,9 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-//超カンタンに説明すると「use」は巨大な折りたたみ。
-//折りたたんだだけだから、classに記載の無いclass::function();で呼び出せちゃう。難読にはなる
-
 
 class AuthController extends Controller {
 	/*

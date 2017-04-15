@@ -11,9 +11,7 @@ abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
-	
-	//Micropost の数のカウントを View で表示する
-	//全てのコントローラで counts() が使用できます。
+	//全てのコントローラ配下で counts() が使用できます。
 	
     public function counts($user) {
         $count_microposts = $user->microposts()->count();

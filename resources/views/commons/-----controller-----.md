@@ -1,5 +1,14 @@
 
-・controllerでするべき事
+#controllerでの考え方
+
+機能的にはmodelに直で無名関数を宣言しているのと、全く同じ。
+
+わかりやすいように、分けているだけで、見た目上の分離。
+
+その証拠にcontroller側でのuseのメソッドに、route側からメソッドをcallしている。
+
+
+#controllerでするべき事
 
 #メソッドを分岐したfunctionを作る
 

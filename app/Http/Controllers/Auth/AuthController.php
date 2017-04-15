@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\User; //model
+
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-
-//Router で設定した getLogin や postLogin の実体は、
-//AuthenticatesAndRegistersUsers -> AuthenticatesUsers
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
 
 class AuthController extends Controller
 {
@@ -67,12 +64,9 @@ class AuthController extends Controller
      * @return User
      */
 	
-	//methodのcreate アクションとは違って、 Userをcreate(save) する。User版のstoreみたいな
-	
     protected function create(array $data)
     {
 		
-		//modelのuserの静的メソッドの呼び出し
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -80,3 +74,4 @@ class AuthController extends Controller
         ]);
     }
 }
+

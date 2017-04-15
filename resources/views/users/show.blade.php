@@ -1,6 +1,10 @@
 
 @extends('layouts.app')
 
+<?php
+//使える変数一覧
+?>
+
 @section('content')
 <div class="row">
 
@@ -20,11 +24,8 @@
 		<ul class="nav nav-tabs nav-justified">
 
 			<?php
-			///users/{id} という URL の場合には、 class="active" にするコードです。 
-			//Bootstrap のタブでは class="active" を付与することで、このタブが今開いているページだとわかりやすくなります。 
+			///users/{id} という URL の場合には、 class="active" にするコードです。 Bootstrapのタブに使う
 			//Request::is はその判定のために使用しています。
-			//routeを採用した理由
-			//理由は、 <span class="badge">{{ $count_microposts }}</span> を含めたリンク名うまく表示されなかったから
 			?>
 
 			<li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}">
@@ -36,9 +37,9 @@
 		</ul>
 
 		@if (count($microposts) > 0)
-		
+
 		@include('microposts.show_microposts', ['microposts' => $microposts])
-		
+
 		@endif
 	</div>
 

@@ -18,7 +18,7 @@ class ContTask extends Controller {
 	//view側の変数「'v_TaskContent'」
 	//この子も、どんな役割にもなれる、万能選手
 
-	public function index() {
+	public function index2() {
 		//TopPage
 		$TaskContent = task::all();
 		//view(path, variable)

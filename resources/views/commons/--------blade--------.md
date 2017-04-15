@@ -13,10 +13,10 @@ PCA！！！！！！！！
 
 {!! link_to_route('viewのpath', 'html contents', URLの末尾?を「第3引数名」で分岐, ['class' => '']) !!}
 {!! link_to_route('signup.get', 'Sign up now!', null, ['class' => '']) !!}
+    {!! Form::model($v_TaskContent, ['route' => ['ViTask.destroy', $v_TaskContent->id], 'method' => 'delete']) !!}
 
-pathの記述パターン
-・folder.phpName (view)
-・URL.method (route)
+
+
 
 
 #自動読込のリンクを貼る
@@ -52,3 +52,20 @@ null or null(model) ofold('content')
 //compass init
 //compass watch
 
+
+#テーブルを作る
+
+    <table class="table table-bordered">
+        <tr>
+            <th>id</th>
+            <td>{{ $v_TaskContent->id }}</td>
+        </tr>
+        <tr>
+            <th>タイトル</th>
+            <td>{{ $v_TaskContent->title }}</td>
+        </tr>
+        <tr>
+            <th>メッセージ</th>
+            <td>{{ $v_TaskContent->content }}</td>
+        </tr>
+    </table>

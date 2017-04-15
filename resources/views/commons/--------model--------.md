@@ -1,7 +1,7 @@
 
-・modelでする事
+#modelでする事
 
-optionは割愛
+・optionは割愛
 
 #tableと対のclass extends model を作る（1テーブル、1モデル）
 
@@ -44,31 +44,33 @@ Create a new Eloquent model class
 php artisan make:model ModelName
 
 --------------------------------------------------
---------------------------------------------------
 
-Interact with your application
+#artisan
+
+・Interact with your application
 php artisan tinker
 
- List all registered routes
+・List all registered routes
 php artisan route:list
 
-Restart queue worker daemons after their current job
+・Restart queue worker daemons after their current job
 php artisan queue:restart
 
-Display this laravel application version
+・Display this laravel application version
 php artisan --version OR -V
 
-Serve the application on the PHP development server
+・Serve the application on the PHP development server
 php artisan serve
 
-Change the default port
+・Change the default port
 php artisan serve --port 8080
 
-Flush the application cache（バージョンアップの時に使った方がいいかな？！）
+・Flush the application cache（バージョンアップの時に使った方がいいかな？！）
 php artisan cache:clear
 
 --------------------------------------------------
 
+#middleware, service, request の雛形
 Create a new middleware class
 php artisan make:middleware name
 

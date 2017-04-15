@@ -1,15 +1,17 @@
 
 <ul class="media-list">
 
-	
-	@foreach ($microposts as $micropost)
 
+	<?php Helper::dg( $microposts );?>
+
+	@foreach ($microposts as $micropost)
+	
 	<?php
 	/*
-	var_dump($microposts);
-	
-	//id（複数）インスタンス
-	$user = $micropost->user;
+	  var_dump($microposts);
+
+	  //id（複数）インスタンス
+	  $user = $micropost->user;
 	 */
 	?>
 
@@ -38,10 +40,6 @@
             </div>
 
             <div>
-
-				
-				
-
 				<?php //update  ?>
 
                 @if (Auth::user()->id == $micropost->user_id)
@@ -49,7 +47,6 @@
 				{!! Form::open(['route' => ['microposts.edit', $micropost->id], 'method' => 'get']) !!}
 				{!! Form::submit('Update', ['class' => 'btn btn-info btn-xs']) !!}
 				{!! Form::close() !!}
-
 
                 @endif
             </div>
@@ -60,4 +57,9 @@
 	@endforeach
 
 </ul>
+
+<?php //ペジネーション ?>
 {!! $microposts->render() !!}
+
+<?php //ユーザー一覧？？ ?>
+@include('users.users')

@@ -1,21 +1,18 @@
 <?php
 
-
-
 namespace App\Http\Controllers;
+
+use App\User; //model
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\User; //modelのエイリアス追加。以降、ファサードとして使用できる
-
-
 class UsersController extends Controller {
 
 	public function index() {
 
-		$users = User::paginate(10); //$users = User::all();はつらい。ページネーションを採用
+		$users = User::paginate(5);
 
 		return view('users.index', [
 			'users' => $users,

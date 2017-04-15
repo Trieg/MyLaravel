@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Micropost; //model
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use App;
-use App\Micropost; //modelのエイリアス追加
 
 class MicropostsController extends Controller {
 

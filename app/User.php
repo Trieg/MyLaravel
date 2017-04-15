@@ -21,14 +21,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 	protected $hidden = ['password', 'remember_token'];
 	
 	
-	//UserからMicropostをみたとき、複数存在するので、function microposts()のように複数形micropostsでメソッドを定義
 	public function microposts()
     {
 		
         return $this->hasMany(Micropost::class); //依存性の構築
 		
-		//User のインスタンスが自分のMicropostsを取得することができます。
-		//$user->microposts()->all() もしくは簡単に $user->microposts で取得できます。
+		//user modelのインスタンスで、Micropostsのtableを取得できるようになる
+		//例えば、$user->microposts()->all()
 		
     }
 	

@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
+
+//authが呼ばれた時に、毎回呼ばれるメソッド。middlewearディレクトリにあるよ
 class Authenticate {
 
 	/**
@@ -32,8 +34,6 @@ class Authenticate {
 	 * @return mixed
 	 */
 	
-//authが呼ばれた時に、毎回呼ばれるメソッド
-//app/Http/Middleware/Authenticate.php
 
 	public function handle($request, Closure $next) {
 		

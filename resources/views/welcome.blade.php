@@ -1,15 +1,13 @@
 @extends('layouts.app')
 @section('content')
 
+<?php
+//使える変数一覧
+?>
 
 @if (Auth::check())
 
 <?php
-/*
-  if (isset($bool)) {
-  var_dump($instance);
-  }
- */
 $user = Auth::user();
 ?>
 
@@ -48,24 +46,20 @@ $user = Auth::user();
 		{!! Form::close() !!}
 
 		@endif
-		
+
 		<?php //destoroy  ?>
 
 		@if(isset($micropost))
 
-		<?php //echo 'debug id---'."$micropost->id"; ?>
 		<br>
-		<?php //echo gettype($micropost) ?>
-		<?php //echo is_object($micropost) ?>
-		<?php //echo 'debug array---'."$micropost[id]" ?>
 
 		{!! Form::model($micropost, ['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
 		{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
 		{!! Form::close() !!}
 		@endif
 
+		<?php //編集のboolチェック  ?>
 
-		
 		@if(! isset($bool))
 
 		{!! Form::open(['route' => 'microposts.store']) !!}
@@ -96,30 +90,32 @@ $user = Auth::user();
 		{!! Form::close() !!}
 
 		@endif
-		
+
 	</aside>
 
 	<aside class="col-xs-8">
 		@include('microposts.show_microposts')
 	</aside>
 
-
-
 </div>
+@endif
 
-@else
+
+<?php //ゲスト、登録ユーザーのboolチェック  ?>
+@if (! Auth::check())
 
 <div class="center jumbotron">
 
 	<div class="text-center">
-		
+
 		<h1>Welcome to the Microposts</h1>
 
 		{!! link_to_route('signup.get', 'Sign up now!', null, ['class' => 'btn btn-lg btn-primary']) !!}
-		
+
 	</div>
 
 </div>
 @endif
+
 
 @endsection

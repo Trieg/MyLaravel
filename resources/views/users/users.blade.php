@@ -1,3 +1,15 @@
+
+<?php
+
+?>
+
+<?php //Helper::dg( $users );?>
+<?php //Helper::dg( $user );?>
+
+<?php
+
+/*
+
 @if (count($users) > 0)
 
 <ul class="media-list">
@@ -21,7 +33,8 @@
 @endforeach
 </ul>
 
-<!--ページネーションを表示-->
 {!! $users->render() !!}
 
 @endif
+
+*/

@@ -23,6 +23,7 @@
 
         <div class="media-body">
             <div>
+				<?php //ユーザー一覧 ?>
                 {!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!} 
 				<span class="text-muted">created at {{ $micropost->created_at }}</span>
             </div>
@@ -61,5 +62,3 @@
 <?php //ペジネーション ?>
 {!! $microposts->render() !!}
 
-<?php //ユーザー一覧？？ ?>
-@include('users.users')

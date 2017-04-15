@@ -1,6 +1,8 @@
 
 @extends('layouts.app')
 
+<?php //タブページ ?>
+
 <?php
 //使える変数一覧
 ?>

@@ -1,14 +1,9 @@
 
-<?php
-
-?>
+<?php //ユーザー一覧 ?>
 
 <?php //Helper::dg( $users );?>
 <?php //Helper::dg( $user );?>
 
-<?php
-
-/*
 
 @if (count($users) > 0)
 
@@ -37,4 +32,3 @@
 
 @endif
 
-*/

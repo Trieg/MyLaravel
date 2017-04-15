@@ -28,3 +28,10 @@ Route::group(['middleware' => 'auth'], function () {
 	
 });
 
+//microposts.store 
+//microposts.update
+//microposts.destroy 
+//microposts.edit
+
+//users.index
+//users.show

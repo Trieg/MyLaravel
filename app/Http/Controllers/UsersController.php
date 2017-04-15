@@ -16,7 +16,8 @@ class UsersController extends Controller {
 
 		$users = User::paginate(5);
 
-		return view('users.index', [
+		//ユーザー一覧
+		return view('users.users', [
 			'users' => $users,
 		]);
 	}
@@ -37,6 +38,7 @@ class UsersController extends Controller {
         
         $data += $this->counts($user);
         
+		//タブページ
         return view('users.show', $data);
     }
 	

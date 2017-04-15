@@ -1,9 +1,10 @@
+@extends('layouts.app')
+@section('content')
 
 <?php //ユーザー一覧 ?>
 
 <?php //Helper::dg( $users );?>
 <?php //Helper::dg( $user );?>
-
 
 @if (count($users) > 0)
 
@@ -16,12 +17,15 @@
         </div>
 		
         <div class="media-body">
+			
             <div>
                 {{ $user->name }}
             </div>
+			
             <div>
                 <p>{!! link_to_route('users.show', 'View profile', ['id' => $user->id]) !!}</p>
             </div>
+			
         </div>
 		
     </li>
@@ -32,3 +36,4 @@
 
 @endif
 
+@endsection

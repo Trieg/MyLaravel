@@ -1,6 +1,4 @@
 
-<p>テスト</p>
-
 @if (Auth::user()->id != $user->id) 
 
     @if (Auth::user()->is_following($user->id))

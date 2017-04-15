@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('top_page')
 
     <div class="row">
         <aside class="col-xs-4">

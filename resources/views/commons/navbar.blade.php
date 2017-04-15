@@ -18,7 +18,7 @@
 
                     @if (Auth::check())
 					<li>
-						{!! link_to_route('users.show', 'OtherUsers', ['id' => $user->id]) !!} 
+						{!! link_to_route('users.index', 'OtherUsers', ['id' => $user->id]) !!} 
 					</li>
 
 					<li class="dropdown">

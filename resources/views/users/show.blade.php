@@ -1,7 +1,7 @@
+<?php //タブページ ?>
+
 @extends('layouts.app')
 @section('content')
-
-<?php //タブページ ?>
 
 <?php
 //使える変数一覧
@@ -32,7 +32,7 @@
 		<ul class="nav nav-tabs nav-justified">
 
 			<?php
-			///users/{id} という URL の場合には、 class="active" にするコードです。 Bootstrapのタブに使う
+			///users/{id} という URL の場合には、 class="active" にするコードです。Bootstrapのタブに使用
 			//Request::is はその判定のために使用しています。
 			?>
 

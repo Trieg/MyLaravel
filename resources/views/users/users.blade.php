@@ -1,7 +1,7 @@
+<?php //ユーザー一覧 ?>
+
 @extends('layouts.app')
 @section('content')
-
-<?php //ユーザー一覧 ?>
 
 <?php //Helper::dg( $users );?>
 <?php //Helper::dg( $user );?>

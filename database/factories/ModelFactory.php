@@ -26,4 +26,5 @@ $factory -> define( App\User::class, function (Faker\Generator $faker){
 
 //php artisan tinker
 //factory(App\User::class, 10)->create();
-//App\Page::count(); → 10
+//App\User::count(); → 10
+

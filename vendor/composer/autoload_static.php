@@ -339,7 +339,6 @@ class ComposerStaticInit7d6efd9988c6e058c91005c4e1919c70
     );
 
     public static $classMap = array (
-        'AddMicroposts04111903' => __DIR__ . '/../..' . '/database/migrations/2017_04_11_190350_add_microposts04111903.php',
         'CreateMicropostsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_03_123923_create_microposts_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
@@ -818,6 +817,7 @@ class ComposerStaticInit7d6efd9988c6e058c91005c4e1919c70
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'Relation' => __DIR__ . '/../..' . '/database/migrations/2017_04_15_221145_relation.php',
         'SebastianBergmann\\Comparator\\ArrayComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ArrayComparator.php',
         'SebastianBergmann\\Comparator\\Comparator' => __DIR__ . '/..' . '/sebastian/comparator/src/Comparator.php',
         'SebastianBergmann\\Comparator\\ComparisonFailure' => __DIR__ . '/..' . '/sebastian/comparator/src/ComparisonFailure.php',
@@ -857,7 +857,6 @@ class ComposerStaticInit7d6efd9988c6e058c91005c4e1919c70
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
-        'Todo170410' => __DIR__ . '/../..' . '/database/migrations/2017_04_10_161343_todo17-0410.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

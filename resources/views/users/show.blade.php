@@ -37,6 +37,9 @@
 			<li><a href="#">Followings</a></li>
 			<li><a href="#">Followers</a></li>
 		</ul>
+		
+		<?php //follow button  ?>
+		@include('user_follow.follow_button', ['user' => $user])
 
 		@if (count($microposts) > 0)
 

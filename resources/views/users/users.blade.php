@@ -35,7 +35,9 @@
 @endforeach
 </ul>
 
-{!! $users->render() !!}
+<?php // 
+//{!! $users->render() !!}
+?>
 
 @endif
 

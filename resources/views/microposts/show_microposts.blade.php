@@ -6,14 +6,7 @@
 
 	@foreach ($microposts as $micropost)
 	
-	<?php
-	/*
-	  var_dump($microposts);
-
-	  //id（複数）インスタンス
-	  $user = $micropost->user;
-	 */
-	?>
+	
 
     <li class="media">
 
@@ -22,6 +15,7 @@
         </div>
 
         <div class="media-body">
+			
             <div>
 				<?php //ユーザー名 ?>
                 {!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!} 
@@ -59,6 +53,7 @@
 
 </ul>
 
-<?php //ペジネーション ?>
-{!! $microposts->render() !!}
+<?php //ペジネーション 
+//{!! $microposts->render() !!}
 
+?>

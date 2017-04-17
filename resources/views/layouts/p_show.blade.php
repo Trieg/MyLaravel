@@ -8,7 +8,8 @@
 ?>
 
 <?php //dd( $auth_user );?>
-<?php //dd( $followers );?>
+<?php //var_dump( $followings );?>
+<?php //var_dump( $test );?>
 <?php //dd( $user );?>
 
 @section('content')

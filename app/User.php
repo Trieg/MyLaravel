@@ -21,8 +21,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 	protected $hidden	 = [ 'password', 'remember_token' ];
 
 	
-	//user modelのインスタンスで、Micropostsのtableを取得できるようになる
-	//例えば、$user->microposts()->all()
+	//user modelのインスタンスで、Micropostsのtableを取得できるようになる。下記のように取得
+	//$user->microposts()
 	public function microposts(){
 
 		return $this -> hasMany( Micropost::class );
@@ -87,7 +87,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->followings()->where('follow_id', $userId)->exists();
     }
 	
-	public function feed_microposts()
+	//こっちにあったんすか。。
+	static public function feed_microposts()
     {
 		//User がフォローしている User の id の配列を取得
 		//list() は与えられた引数のテーブルのカラム名だけを抜き出す

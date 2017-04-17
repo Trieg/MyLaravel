@@ -31,6 +31,9 @@ class Helper{
 
 	}
 
+	//emptyは、0、”"、nullがセットされていても、falseと評価。
+	//issetは、nullの場合にfalseと評価
+	
 	public static function dg( $var = null ){
 
 		$debug_bool	 = false;

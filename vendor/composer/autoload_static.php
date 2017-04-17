@@ -339,6 +339,7 @@ class ComposerStaticInit7d6efd9988c6e058c91005c4e1919c70
     );
 
     public static $classMap = array (
+        'AddMicropost' => __DIR__ . '/../..' . '/database/migrations/2017_04_17_231238_add_micropost.php',
         'CreateMicropostsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_03_123923_create_microposts_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

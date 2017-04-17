@@ -2,7 +2,7 @@
 <ul class="media-list">
 
 
-	<?php Helper::dg( $microposts );?>
+	<?php //Helper::dg( $microposts );?>
 
 	@foreach ($microposts as $micropost)
 	

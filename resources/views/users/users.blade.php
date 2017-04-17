@@ -3,8 +3,6 @@
 @extends('layouts.app')
 @section('content')
 
-<?php //Helper::dg( $users );?>
-<?php //Helper::dg( $user );?>
 
 @if (count($users) > 0)
 

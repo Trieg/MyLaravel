@@ -1,4 +1,7 @@
-<?php //ユーザー一覧 ?>
+<?php
+//name ユーザー一覧
+//UsersController -> index
+?>
 
 @extends('layouts.app')
 @section('content')
@@ -8,6 +11,7 @@
 
 <ul class="media-list">
 @foreach ($users as $user)
+
     <li class="media">
 		
         <div class="media-left">
@@ -27,6 +31,7 @@
         </div>
 		
     </li>
+	
 @endforeach
 </ul>
 

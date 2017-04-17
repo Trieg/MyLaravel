@@ -51,7 +51,7 @@ class MicropostsController extends Controller {
 				'user'		 => $user,
 				'microposts' => $microposts,
 				'micropost'	 => $aaa,
-				'bool'		 => true,
+				'auth_bool'		 => true,
 			];
 		}
 		return view('welcome', $data);

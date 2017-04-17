@@ -19,7 +19,7 @@ $user = Auth::user();
 
 		<?php //編集のboolチェック  ?>
 
-		@if(! isset($bool))
+		@if(! isset($auth_bool))
 
 		{!! Form::open(['route' => 'microposts.store']) !!}
 
@@ -31,7 +31,7 @@ $user = Auth::user();
 		@endif
 
 		<?php //編集のboolチェック  ?>
-		@if(isset($bool))
+		@if(isset($auth_bool))
 
 		{!! Form::model($micropost, ['route' => ['microposts.update', $micropost->id], 'method' => 'put']) !!}
 

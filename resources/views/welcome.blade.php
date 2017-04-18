@@ -11,7 +11,11 @@
 @if (Auth::check())
 
 <?php
+$aaa = Auth::user()->follow();
+dd($aaa);
+
 $user = Auth::user();
+
 ?>
 
 <div class="row">

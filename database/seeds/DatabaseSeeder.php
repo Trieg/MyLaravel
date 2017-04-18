@@ -103,7 +103,6 @@ class RelationTableSeeder extends Seeder{
 //php artisan db:seed --class=UserTableSeeder
 //php artisan db:seed --class=MicropostTableSeeder
 
-//if( ( bool )random_int( 0, 1 ) ){
 
 /*
         'name' => $faker->name,

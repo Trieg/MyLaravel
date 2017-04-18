@@ -339,7 +339,6 @@ class ComposerStaticInit7d6efd9988c6e058c91005c4e1919c70
     );
 
     public static $classMap = array (
-        'AddMicropost' => __DIR__ . '/../..' . '/database/migrations/2017_04_17_231238_add_micropost.php',
         'CreateMicropostsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_03_123923_create_microposts_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
@@ -416,6 +415,7 @@ class ComposerStaticInit7d6efd9988c6e058c91005c4e1919c70
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+        'MicropostTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
@@ -858,6 +858,7 @@ class ComposerStaticInit7d6efd9988c6e058c91005c4e1919c70
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

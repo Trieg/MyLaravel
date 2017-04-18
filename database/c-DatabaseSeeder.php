@@ -1,21 +1,8 @@
 <?php
-/*
-use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
-class DatabaseSeeder extends Seeder{
+class DescriptionSeeder extends Seeder{
 
-	//function runの実行
-	//php artisan db:seed
-	//
-	//特定のclassのみ実行
-	//php artisan db:seed --class=UserTableSeeder
-	//
-	//migrateと同時に実行
-	//php artisan migrate:refresh --seed
-	//
 	//このクラスからcallメソッドを使い他の初期値設定クラスを呼び出すことで、値を設定する順番をコントロールできる
-	//function runは、db:seed Artisanコマンドが実行された時に実行
 
 	public function run(){
 		//guard()は、マスアサインメント（create()でfillableを使って保存）を使う
@@ -23,13 +10,13 @@ class DatabaseSeeder extends Seeder{
 		//
         Model::unguard();
 
-		$this -> call( 'ArticlesTableSeeder' );  // ②
+		$this -> call( 'ArticlesTableSeeder' );
 
 		Model::reguard();
 
 	}
-
 }
+
 
 //テーブル毎にSeederの派生クラスを作成すると、管理しやすくする
 

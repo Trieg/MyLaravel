@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Micropost extends Model {
+class Micropost extends Model{
 
-	protected $table = 'microposts';
-	protected $fillable = ['content', 'user_id', 'title', 'status'];
+	protected $table	 = 'microposts';
+	protected $fillable	 = [ 'user_id', 'title', 'content', 'status' ];
 
-	public function user() {
-		return $this->belongsTo(User::class); //依存性の構築
+	public function user(){
+		return $this -> belongsTo( User::class ); //依存性の構築
+
 	}
 
 }

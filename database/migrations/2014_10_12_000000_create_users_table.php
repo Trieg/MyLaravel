@@ -13,12 +13,16 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+			
+			//laravelでは、incrementsは、unsigned() -> index()が設定されてる
+			//外部keyはincrementsだけにする、ってのは割りと安心感はある
             $table->increments('id');
 			
             $table->string('name')-> unique()-> index();
             $table->string('email')->unique()-> index();
 			
             $table->string('password', 60);
+			
             $table->rememberToken();
             $table->timestamps();
         });

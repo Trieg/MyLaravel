@@ -18,31 +18,19 @@ class CreateMicropostsTable extends Migration{
 			$table -> increments( 'id' );
 
 			$table -> integer( 'user_id' ) -> unsigned() -> index();
-			// 外部キー設定
-			$table -> foreign( 'user_id' ) -> references( 'id' ) -> on( 'users' );
-			
-			
-			$table -> string( 'user_name' ) ->unique() -> index();
-			// 外部キー設定
-			$table -> foreign( 'user_name' ) -> references( 'name' ) -> on( 'users' );
-			
-
-			$table -> string( 'user_email' ) ->unique() -> index();
-			// 外部キー設定
-			$table -> foreign( 'user_email' ) -> references( 'email' ) -> on( 'users' );
+			$table -> foreign( 'user_id' ) -> references( 'id' ) -> on( 'users' ) -> onDelete( 'cascade' );
 
 			$table -> string( 'title' );
 			$table -> string( 'content' );
 			$table -> string( 'status' );
 
 			$table -> timestamps();
-
 		} );
 
 	}
 
 	public function down(){
-		//同じtable名があった時用
+
 		Schema::drop( 'microposts' );
 
 	}

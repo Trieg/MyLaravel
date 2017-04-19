@@ -34,26 +34,4 @@
 				</p>
             </div>
 
-            <div>
-				<?php //update  ?>
-
-                @if (Auth::user()->id == $micropost->user_id)
-
-				{!! Form::open(['route' => ['microposts.edit', $micropost->id], 'method' => 'get']) !!}
-				{!! Form::submit('Update', ['class' => 'btn btn-info btn-xs']) !!}
-				{!! Form::close() !!}
-
-                @endif
-            </div>
-        </div>
-
-    </li>
-
-	@endforeach
-
-</ul>
-
-<?php //ペジネーション 
-//{!! $microposts->render() !!}
-
-?>
+            

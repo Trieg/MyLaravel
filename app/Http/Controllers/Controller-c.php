@@ -115,3 +115,47 @@ class ContTask extends Controller {
 	}
 
 }
+
+
+/*
+    // getでhello/にアクセスされた場合
+    public function index()
+    {
+        〜
+    }
+
+    // getでhello/createにアクセスされた場合
+    public function create()
+    {
+        〜
+    }
+
+    // postでhello/にアクセスされた場合
+    public function store()
+    {
+        〜
+    }
+
+    // getでhello/messageにアクセスされた場合
+    public function show($message)
+    {
+        〜
+    }
+
+    // getでhello/message/editにアクセスされた場合
+    public function edit($message)
+    {
+        〜
+    }
+
+    // putまたはpatchでhello/messageにアクセスされた場合
+    public function update($message)
+    {
+        〜
+    }
+
+    // deleteでhello/messageにアクセスされた場合
+    public function destroy($message)
+    {
+        〜
+    }

@@ -7,6 +7,7 @@
 //var_dump($wings_users);
 ?>
 
+<?php /*
 @foreach ($wings_users as $f_user)
 
 <li class="media">

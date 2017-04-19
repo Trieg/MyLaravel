@@ -10,7 +10,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Microposts</a>
+				
+				<a class="navbar-brand" href="/">My message</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -19,7 +20,7 @@
 					<?php //link ?>
                     @if (Auth::check())
 					<li>
-						{!! link_to_route('users.index', 'OtherUsers', ['id' => $user->id]) !!} 
+						{!! link_to_route('users.all', 'OtherUsers', ['id' => $user->id]) !!} 
 					</li>
 					
 					<?php //強引だけど、とりあえずのバグ直し ?>

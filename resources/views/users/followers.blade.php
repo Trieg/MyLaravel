@@ -7,6 +7,7 @@
 //var_dump( $wers_users );
 ?>
 
+<?php /*
 @foreach ($wers_users as $f_user)
 
 <li class="media">

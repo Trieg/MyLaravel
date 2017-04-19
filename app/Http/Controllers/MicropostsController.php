@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Micropost; //model
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use App;
 
-class MicropostsController extends Controller {
+class MicropostsController extends Controller{
 
 	/**
 	 * Store a newly created resource in storage.
@@ -18,74 +17,64 @@ class MicropostsController extends Controller {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request) {
+	public function store( Request $request ){
 
-		$this->validate($request, [
+		$this -> validate( $request, [
 			'title'		 => 'required|max:255',
 			'content'	 => 'required|max:255',
 			'status'	 => 'required|max:255',
-		]);
+		] );
 
-		$request->user()->microposts()->create([
-			'title'		 => $request->title,
-			'content'	 => $request->content,
-			'status'	 => $request->status,
-		]);
+		$request -> user() -> microposts() -> create( [
+			'title'		 => $request -> title,
+			'content'	 => $request -> content,
+			'status'	 => $request -> status,
+		] );
 
-		return redirect('/');
+		return redirect( '/' );
+
 	}
 
-	public function edit($id) {
+	public function edit( $id ){
 
 
 		$data = [];
 
-		if (\Auth::check()) {
+		if( \Auth::check() ){
 
 			$user		 = \Auth::user();
-			$microposts	 = $user->microposts()->orderBy('created_at', 'desc')->paginate(10);
+			$microposts	 = $user -> microposts() -> orderBy( 'created_at', 'desc' ) -> paginate( 10 );
 
-			$aaa = Micropost::find($id);
+			$aaa = Micropost::find( $id );
 
 			$data = [
 				'user'		 => $user,
 				'microposts' => $microposts,
 				'micropost'	 => $aaa,
-				'auth_bool'		 => true,
+				'auth_bool'	 => true,
 			];
 		}
-		return view('welcome', $data);
-
-
-		//return redirect()->back();
-		//return redirect('/');
-	}
-
-	public function update(Request $request, $id){
-
-
-		if(isset($id)){
-			
-	
 		
-		$instance = Micropost::find($id);
-		//連想配列で入っているので、$requestからkeyを指定して取り出し、インスタンスへの再代入、最後にDB保存
-
-		$instance->content	 = $request->content;
-		$instance->title	 = $request->title;
-		$instance->status	 = $request->status;
-
-		$instance->save();
+		return view( 'welcome', $data );
 
 	}
 
-		/*
-		  Micropost::where($id)
-		  ->update(['content' => $request->content]);
-		 * 
-		 */
-		//view無し
-		return redirect('/');
+	public function update( Request $request, $id ){
+
+		if( isset( $id ) ){
+
+			$instance = Micropost::find( $id );
+			//連想配列で入っているので、$requestからkeyを指定して取り出し、インスタンスへの再代入、最後にDB保存
+
+			$instance -> content	 = $request -> content;
+			$instance -> title	 = $request -> title;
+			$instance -> status	 = $request -> status;
+
+			$instance -> save();
+		}
+
+		return redirect( '/' );
+
 	}
 
 	/**
@@ -94,21 +83,17 @@ class MicropostsController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id) {
+	public function destroy( $id ){
 
-		
-		$instance = Micropost::find($id);
-		
-		
-		if (\Auth::user()->id === $instance->user_id) {
-		
-			$instance->delete();
+		$instance = Micropost::find( $id );
+
+		if( \Auth::user() -> id === $instance -> user_id ){
+
+			$instance -> delete();
 		}
-		
-		
 
-		return redirect('/');
-		//return redirect()->back();
+		return redirect( '/' );
+
 	}
 
 }

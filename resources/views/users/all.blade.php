@@ -1,7 +1,3 @@
-<?php
-//name ユーザー一覧
-//UsersController -> index
-?>
 
 @extends('layouts.app')
 @section('content')

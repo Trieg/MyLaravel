@@ -37,42 +37,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
 	}
 
-	//オブジェクトが2つでcollection。オブジェクトが１つで、builder（hasmanyもbuilder）（クエリービルダー）
-	//hasmany の取り除き型。get、first、findなど。getは、運用できる用に、皮を剥ぐかんじです
-	//分解（builder）すれば、$user->name;もOK
+	//オブジェクトが2つでCollection。オブジェクトが１つでBuilder（hasmanyもbuilder）（クエリービルダー）
+	//hasmany の取り除き型。get、first、findなど。
+	//オブジェクトを1つにしてBuilderすれば、$user->nameでカラム取得もOK
 
-	public function follow(){
 
-		$auth_id		 = \Auth::user() -> id; //authのidを取り出して
-		$myid_objects	 = Relation::where( 'user_id', $auth_id ) -> get();
-		$myid			 = Relation::where( 'user_id', $auth_id ) -> lists( 'other_id' ) -> toarray();
-		//$yourid = $instance->id;
-		$yourid			 = User::find( 85 ) -> id;
-
-		//何度もフォローさせない && 自分自身をフォローさせない
-
-		if( $yourid != $myid ){
-			if( ! in_array( $yourid, $myid ) ){
-				//true処理
-				Relation::create( [
-					'user_id'	 => $auth_id,
-					'other_id'	 => $yourid,
-					'follow'	 => 'ture'
-				] );
-				return $myid = 'followをtureしたよ'; //たぶん出来た。後でテストして！！
-			}else{
-				//false処理
-				$yourid -> delete();
-				return $myid = 'followをfalseたよ';
-			}
-		}else{
-			//エラー用の処理
-			return $myid = 'エラーだよ';
-		}
-
-		return $myid;
-
-	}
 
 }
 

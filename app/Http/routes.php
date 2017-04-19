@@ -15,30 +15,28 @@ Route::get( 'logout', 'Auth\AuthController@getLogout' ) -> name( 'logout.get' );
 
 //---------------------WelcomeController---------------------
 
-Route::get( '/', 'WelcomeController@index' );
+Route::get( '/', 'WelcomeController@index' ) -> name( 'root.index' );
 
 //---------------------UserController, MicropostController---------------------
 
 Route::group( [ 'middleware' => 'auth' ], function (){
+	
+	Route::get('users/all', 'UsersController@all') -> name( 'users.all' );
+	Route::get('users/{id}/show', 'UsersController@show') -> name( 'users.show' );
 
-	Route::resource( 'users', 'UsersController', [ 'only' => [ 'index', 'show' ] ] );
+	//ホームリダイレクト、既存URLの場合はresourceを使ってもokとする
 	Route::resource( 'microposts', 'MicropostsController', [ 'only' => [ 'store', 'destroy', 'edit', 'update' ] ] );
 
 	//prefix/URL
 	Route::group( [ 'prefix' => 'users/{id}' ], function (){
-		Route::post( 'follow', 'UserFollowController@store' ) -> name( 'user.follow' );
-		Route::delete( 'unfollow', 'UserFollowController@destroy' ) -> name( 'user.unfollow' );
 		
+		Route::post( 'follow', 'UserFollowController@store' ) -> name( 'follow.store' );
+		
+		Route::delete( 'unfollow', 'UserFollowController@delete' ) -> name( 'follow.delete' );
+		
+		//下記はホントにいるURLなの？？？
 		Route::get( 'followings', 'UsersController@followings' ) -> name( 'users.followings' );
 		Route::get( 'followers', 'UsersController@followers' ) -> name( 'users.followers' );
 	} );
 } );
-
-//users.index
-//users.show
-
-//microposts.store 
-//microposts.update
-//microposts.destroy 
-//microposts.edit
 

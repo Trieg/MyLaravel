@@ -3,15 +3,6 @@
 @extends('layouts.app')
 @section('content')
 
-<?php
-//$auth_user = 0;
-?>
-
-<?php //dd( $auth_user );?>
-<?php //var_dump( $followings );?>
-<?php //var_dump( $test );?>
-<?php //dd( $user );?>
-
 @section('content')
 <div class="row">
 
@@ -37,19 +28,17 @@
 
 		<ul class="nav nav-tabs nav-justified">
 
-
-
-			<?php //tab  ?>
 			<ul class="nav nav-tabs">
                 <li>
 					<a href="{{ route('users.show', ['id' => $user->id]) }}">Microposts
 						<span class="badge">{{ $count_microposts }}</span></a></li>
+								
                 <li>
-					<a href="{{ route('users.followings', ['id' => $user->id]) }}">Followings
-						<span class="badge">{{ $count_followings }}</span></a></li>
+					<a href="{{ route('root.index', ['id' => $user->id]) }}">Followings
+						<span class="badge">{{ 100 }}</span></a></li>
                 <li>
-					<a href="{{ route('users.followers', ['id' => $user->id]) }}">Followers
-						<span class="badge">{{ $count_followers }}</span></a></li>
+					<a href="{{ route('root.index', ['id' => $user->id]) }}">Followers
+						<span class="badge">{{ 100 }}</span></a></li>
             </ul>
 
 			@yield('tab')

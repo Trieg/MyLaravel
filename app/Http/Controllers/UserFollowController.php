@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User; //model
-
+use App\Relation; //model
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,14 +11,13 @@ use App\Http\Controllers\Controller;
 class UserFollowController extends Controller{
 
 	public function store( Request $request, $id ){
-		\Auth::user() -> follow( $id );
-		return redirect() -> back();
-
-	}
-
-	public function destroy( $id ){
-		\Auth::user() -> unfollow( $id );
-		return redirect() -> back();
+		
+		$date= $this -> user_branch( $id ); //引数の$idは、オブジェクトでなく、intだった（検証済み）
+	
+		return $date;
+		
+		//$date = [ 'date' => $test ];
+		//return (isset( $date )) ? view( 'test', $date ) : view( 'test' );
 
 	}
 

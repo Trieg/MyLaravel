@@ -27,19 +27,21 @@ class UsersController extends Controller{
 
 		extract( $this -> init_var( $id ) );
 
+		extract( $this -> count( $your ) );
+
+		//RULE 全て単数形で統一（日本人の英語感覚を優先する）
+		//TODO複数形をリファクタリング
 		$microposts = $your -> micropost() -> orderBy( 'created_at', 'desc' ) -> paginate( 10 );
-		
-		$count_microposts=$your -> micropost() ->count();
-		
+
 		//viewへの変数渡しはcompact()しないで、変数名を独立させて、リファクタリングを楽にする
 		$data = [
-			'auth_user'			 => $auth,
-			'user'				 => $your,
-			'microposts'		 => $microposts,
-			'count_microposts'	 => $count_microposts,
-			//'count_follow'		 => $count_follow,
-			//'count_star'		 => $count_star,
-			//'match_follow'		 => $match_follow
+			'auth_user'						 => $auth,
+			'user'							 => $your,
+			'microposts'					 => $microposts,
+			'count_micropost'				 => $count_micropost,
+			'count_auth_to_you_like'		 => $count_auth_to_you_like,
+			'count_you_to_auth_like'	 => $count_you_to_auth_like,
+				//'count_star'		 => $count_star,
 		];
 
 		return view( 'users.show_user', $data );

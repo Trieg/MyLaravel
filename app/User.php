@@ -38,49 +38,50 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
 	//$user->auth_to_you
 	public function auth_to_you_like(){
-		return $this -> belongsToMany( User::class, 'follow', 'user_id', 'follow_id' ) -> withTimestamps();
+		return $this -> belongsToMany( User::class, 'like', 'user_id', 'like_id' ) -> withTimestamps();
 
 	}
 
 	//$user->you_to_auth
 	public function you_to_auth_like(){
-		return $this -> belongsToMany( User::class, 'follow', 'follow_id', 'user_id' ) -> withTimestamps();
+		return $this -> belongsToMany( User::class, 'like', 'like_id', 'user_id' ) -> withTimestamps();
 
 	}
 
 	//--------------------
 	
-	public function is_following( $userId ){
-		return $this -> auth_to_you_like() -> where( 'follow_id', $userId ) -> exists();
+	public function is_like( $user_id ){
+		
+		return $this -> auth_to_you_like()-> where( 'like_id', $user_id ) -> exists();
 
 	}
 
-	public function do_like( $userId ){
+	public function do_like( $user_id ){
 		// 既にフォローしているかの確認
-		$exist	 = $this -> is_following( $userId );
+		$exist	 = $this -> is_like( $user_id );
 		// 自分自身ではないかの確認
-		$its_me	 = $this -> id == $userId;
+		$its_me	 = $this -> id == $user_id;
 
 		if( $exist || $its_me ){
 			// 既にフォローしていれば何もしない
 			return false;
 		}else{
 			// 未フォローであればフォローする
-			$this -> followings() -> attach( $userId ); //attach = save
+			$this -> auth_to_you_like() -> attach( $user_id ); //attach = save
 			return true;
 		}
 
 	}
 
-	public function not_like( $userId ){
+	public function not_like( $user_id ){
 		// 既にフォローしているかの確認
-		$exist	 = $this -> is_following( $userId );
+		$exist	 = $this -> is_like( $user_id );
 		// 自分自身ではないかの確認
-		$its_me	 = $this -> id == $userId;
+		$its_me	 = $this -> id == $user_id;
 
 		if( $exist && ! $its_me ){
 			// 既にフォローしていればフォローを外す
-			$this -> followings() -> detach( $userId ); //detach = delete
+			$this -> auth_to_you_like() -> detach( $user_id ); //detach = delete
 			return true;
 		}else{
 			// 未フォローであれば何もしない

@@ -31,14 +31,14 @@
 			<ul class="nav nav-tabs">
                 <li>
 					<a href="{{ route('users.show', ['id' => $user->id]) }}">Microposts
-						<span class="badge">{{ $count_microposts }}</span></a></li>
+						<span class="badge">{{ $count_micropost }}</span></a></li>
 								
                 <li>
 					<a href="{{ route('root.index', ['id' => $user->id]) }}">Followings
-						<span class="badge">{{ 100 }}</span></a></li>
+						<span class="badge">{{ $count_auth_to_you_like }}</span></a></li>
                 <li>
 					<a href="{{ route('root.index', ['id' => $user->id]) }}">Followers
-						<span class="badge">{{ 100 }}</span></a></li>
+						<span class="badge">{{ $count_you_to_auth_like }}</span></a></li>
             </ul>
 
 			@yield('tab')

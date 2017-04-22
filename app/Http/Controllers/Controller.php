@@ -56,11 +56,7 @@ abstract class Controller extends BaseController{
 
 	}
 
-	public function count_relation(){
-		
-	}
-
-	public function toggle_follow( $view_user ){
+	public function toggle_relation_done( $view_user ){
 
 		extract( $this -> init_var( $view_user ) );
 
@@ -86,16 +82,15 @@ abstract class Controller extends BaseController{
 
 	}
 
-	public function counts( $user ){
-		$count_microposts	 = $user -> micropost() -> count();
-		$count_followings	 = $user -> auth_to_you_like() -> count();
-		$count_followers	 = $user -> you_to_auth_like() -> count();
+	public function count( $viwe_user ){
+		
+		$count_micropost		 = $viwe_user -> micropost() -> count();
+		$count_auth_to_you_like	 = $viwe_user -> auth_to_you_like() -> count();
+		$count_you_to_auth_like	 = $viwe_user -> you_to_auth_like() -> count();
 
-		return [
-			'count_microposts'	 => $count_microposts,
-			'count_followings'	 => $count_followings,
-			'count_followers'	 => $count_followers,
-		];
+		return $data = compact(
+				'count_micropost', 'count_auth_to_you_like', 'count_you_to_auth_like'
+		);
 
 	}
 

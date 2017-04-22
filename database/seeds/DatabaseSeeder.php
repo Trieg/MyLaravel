@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\helpers; //なぜかヘルパー関数が読み込まれない対策
 
 //php artisan db:seed
 //php artisan migrate:refresh --seed
@@ -19,10 +18,11 @@ class DatabaseSeeder extends Seeder{
 		$this -> call( 'MicropostTableSeeder' );
 		$this -> call( 'RelationTableSeeder' );
 
+		$this -> call( 'LikeTableSeeder' );
+		$this -> call( 'StarTableSeeder' );
+		//
 		//ModelFactoryの方のデータを利用
 		//factory(App\User::class, 10)->create();
-		//factory(App\Micropost::class, 10)->create();
-		//
 		Model::reguard();
 
 	}
@@ -37,7 +37,7 @@ class UserTableSeeder extends Seeder{
 
 		$faker = Faker\Factory::create( 'ja_JP' );
 
-		for( $i = 0; $i < 15; $i ++ ){
+		for( $i = 0; $i < 25; $i ++ ){
 			App\User::create( [
 				'name'		 => $faker -> unique() -> name, //tableのunique属性を合わせる
 				'email'		 => $faker -> unique() -> safeEmail, //tableのunique属性を合わせる
@@ -52,20 +52,63 @@ class UserTableSeeder extends Seeder{
 class MicropostTableSeeder extends Seeder{
 
 	public function run(){
-
 		$temp	 = DB::table( 'users' ) -> lists( 'id' );
 		$min_id	 = ( int )min( $temp );
 		$max_id	 = ( int )max( $temp );
 
 		$faker = Faker\Factory::create( 'ja_JP' );
 
-		for( $i = 0; $i < 200; $i ++ ){
+		for( $i = 0; $i < 300; $i ++ ){
 			App\Micropost::create( [
-				//
-				//外部キーで縛られてるuser_idには、親側に存在しないintを入れるとエラー
 				'user_id'	 => $faker -> numberBetween( $min		 = $min_id, $max		 = $max_id ),
 				'title'		 => $faker -> sentence,
 				'content'	 => $faker -> paragraph,
+			] );
+		}
+
+	}
+
+}
+
+class LikeTableSeeder extends Seeder{
+
+	public function run(){
+
+		$primary_id	 = DB::table( 'users' ) -> lists( 'id' );
+		$min_id		 = ( int )min( $primary_id );
+		$max_id		 = ( int )max( $primary_id );
+
+		$faker = Faker\Factory::create( 'ja_JP' );
+
+		for( $i = 0; $i < 100; $i ++ ){
+			App\Like::create( [
+				'user_id'	 => $faker -> numberBetween( $min		 = $min_id, $max		 = $max_id ),
+				'like_id'	 => $faker -> numberBetween( $min		 = $min_id, $max		 = $max_id ),
+			] );
+		}
+
+	}
+
+}
+
+class StarTableSeeder extends Seeder{
+
+	public function run(){
+
+		$primary_id	 = DB::table( 'users' ) -> lists( 'id' );
+		$min_id		 = ( int )min( $primary_id );
+		$max_id		 = ( int )max( $primary_id );
+
+		$primary_id_mp	 = DB::table( 'micropost' ) -> lists( 'id' );
+		$min_id_mp		 = ( int )min( $primary_id_mp );
+		$max_id_mp		 = ( int )max( $primary_id_mp );
+
+		$faker = Faker\Factory::create( 'ja_JP' );
+
+		for( $i = 0; $i < 500; $i ++ ){
+			App\Star::create( [
+				'user_id'	 => $faker -> numberBetween( $min		 = $min_id, $max		 = $max_id ),
+				'star_id'	 => $faker -> numberBetween( $min		 = $min_id_mp, $max		 = $max_id_mp ),
 			] );
 		}
 
@@ -77,9 +120,9 @@ class RelationTableSeeder extends Seeder{
 
 	public function run(){
 
-		$temp	 = DB::table( 'users' ) -> lists( 'id' );
-		$min_id	 = ( int )min( $temp );
-		$max_id	 = ( int )max( $temp );
+		$primary_id	 = DB::table( 'users' ) -> lists( 'id' );
+		$min_id		 = ( int )min( $primary_id );
+		$max_id		 = ( int )max( $primary_id );
 
 		$bool = ( bool )random_int( 0, 1 );
 
@@ -89,8 +132,8 @@ class RelationTableSeeder extends Seeder{
 			App\Relation::create( [
 				'user_id'	 => $faker -> numberBetween( $min		 = $min_id, $max		 = $max_id ),
 				'other_id'	 => $faker -> numberBetween( $min		 = $min_id, $max		 = $max_id ),
-				'follow' => random_int( 0, 1 ),
-				'star'	 => random_int( 0, 1 ),
+				'dm'		 => $faker -> sentence,
+				'done'		 => $bool,
 			] );
 		}
 

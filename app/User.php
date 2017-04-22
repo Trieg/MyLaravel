@@ -22,47 +22,71 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 	protected $fillable	 = [ 'name', 'email', 'password' ];
 	protected $hidden	 = [ 'password', 'remember_token' ];
 
-	//user modelのインスタンスで、Micropostsのtableを取得できるようになる。下記のように取得
-	//$user->microposts()->column
-	public function microposts(){
+	//$user->micropost()
+	public function micropost(){
 
 		return $this -> hasMany( Micropost::class );
 
 	}
 
-	//$user->relation()->column
+	//$user->relation()
 	public function relation(){
 
 		return $this -> hasMany( Relation::class );
 
 	}
 
-	//オブジェクトが2つでCollection。オブジェクトが１つでBuilder（hasmanyもbuilder）（クエリービルダー）
-	//hasmany の取り除き型。get、first、findなど。
-	//オブジェクトを1つにしてBuilderすれば、$user->nameでカラム取得もOK
+	//$user->auth_to_you
+	public function auth_to_you_like(){
+		return $this -> belongsToMany( User::class, 'follow', 'user_id', 'follow_id' ) -> withTimestamps();
 
+	}
 
+	//$user->you_to_auth
+	public function you_to_auth_like(){
+		return $this -> belongsToMany( User::class, 'follow', 'follow_id', 'user_id' ) -> withTimestamps();
+
+	}
+
+	//--------------------
+	
+	public function is_following( $userId ){
+		return $this -> auth_to_you_like() -> where( 'follow_id', $userId ) -> exists();
+
+	}
+
+	public function do_like( $userId ){
+		// 既にフォローしているかの確認
+		$exist	 = $this -> is_following( $userId );
+		// 自分自身ではないかの確認
+		$its_me	 = $this -> id == $userId;
+
+		if( $exist || $its_me ){
+			// 既にフォローしていれば何もしない
+			return false;
+		}else{
+			// 未フォローであればフォローする
+			$this -> followings() -> attach( $userId ); //attach = save
+			return true;
+		}
+
+	}
+
+	public function not_like( $userId ){
+		// 既にフォローしているかの確認
+		$exist	 = $this -> is_following( $userId );
+		// 自分自身ではないかの確認
+		$its_me	 = $this -> id == $userId;
+
+		if( $exist && ! $its_me ){
+			// 既にフォローしていればフォローを外す
+			$this -> followings() -> detach( $userId ); //detach = delete
+			return true;
+		}else{
+			// 未フォローであれば何もしない
+			return false;
+		}
+
+	}
 
 }
-
-//第一引数に得られる Model クラス (User::class) を指定
-//第二引数に中間テーブルを指定
-//第三引数に中間テーブルに保存されている自分の id を示すカラム名
-//第四引数に中間テーブルに保存されている関係先の id を示すカラム名
-//
-////$user->followings
-//public function followings(){
-//return $this -> belongsToMany( User::class, 'relation', 'user_id', 'follow_id' ) -> withTimestamps();
-//
-//}
-//
-////$user->followers
-//public function followers(){
-//return $this -> belongsToMany( User::class, 'relation', 'follow_id', 'user_id' ) -> withTimestamps();
-//
-//}
-//
-//withTimestamps() は中間テーブルにも created_at と updated_at を保存するためのmodelメソッド
-//また中間テーブルへの保存は、detach attachを使用する
- 
- 

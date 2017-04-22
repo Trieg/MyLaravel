@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App;
 
-class MicropostsController extends Controller{
+class MicropostController extends Controller{
 
 	/**
 	 * Store a newly created resource in storage.
@@ -25,11 +25,13 @@ class MicropostsController extends Controller{
 			'status'	 => 'required|max:255',
 		] );
 
-		$request -> user() -> microposts() -> create( [
+		$request -> user() -> micropost() -> create( [
 			'title'		 => $request -> title,
 			'content'	 => $request -> content,
 			'status'	 => $request -> status,
 		] );
+		
+		//$user->fill($request->all())->save();
 
 		return redirect( '/' );
 
@@ -43,13 +45,13 @@ class MicropostsController extends Controller{
 		if( \Auth::check() ){
 
 			$user		 = \Auth::user();
-			$microposts	 = $user -> microposts() -> orderBy( 'created_at', 'desc' ) -> paginate( 10 );
+			$micropost	 = $user -> micropost() -> orderBy( 'created_at', 'desc' ) -> paginate( 10 );
 
 			$aaa = Micropost::find( $id );
 
 			$data = [
 				'user'		 => $user,
-				'microposts' => $microposts,
+				'microposts' => $micropost,
 				'micropost'	 => $aaa,
 				'auth_bool'	 => true,
 			];

@@ -12,12 +12,10 @@ class Relation extends Migration{
 			$table -> increments( 'id' );
 
 			$table -> integer( 'user_id' ) -> unsigned() -> index();
-			$table -> foreign( 'user_id' ) -> references( 'id' ) -> on( 'users' ) -> onDelete( 'cascade' );
-
 			$table -> integer( 'other_id' ) -> unsigned() -> index();
 
-			$table -> boolean( 'follow' );
-			$table -> boolean( 'star' );
+			$table -> string( 'dm' );
+			$table -> boolean('done');
 
 			$table -> timestamps();
 		} );
@@ -26,7 +24,7 @@ class Relation extends Migration{
 
 	public function down(){
 
-		Schema::drop( 'user_follow' );
+		Schema::drop( 'relation' );
 
 	}
 

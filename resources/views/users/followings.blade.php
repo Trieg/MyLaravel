@@ -3,32 +3,16 @@
 @extends('layouts.p_show')
 @section('tab')
 
-<?php
-//var_dump($wings_users);
-?>
-
-<?php /*
-@foreach ($wings_users as $f_user)
-
-<li class="media">
-
-	<div class="media-left">
-		<img class="media-object img-rounded" src="{{ Gravatar::src($f_user->email, 50) }}" alt="">
-	</div>
-
-	<div class="media-body">
-
-		<div>
-			{{ $f_user->name }}
-		</div>
-
-		<div>
-			<p>{!! link_to_route('users.show', 'View profile', ['id' => $f_user->id]) !!}</p>
-		</div>
-
-	</div>
-
-</li>
-@endforeach
+        <div class="col-xs-8">
+			
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('users.show', ['id' => $user->id]) }}">Microposts <span class="badge">{{ $count_microposts }}</span></a></li>
+                <li role="presentation" class="{{ Request::is('users/*/followings') ? 'active' : '' }}"><a href="{{ route('users.followings', ['id' => $user->id]) }}">Followings <span class="badge">{{ $count_followings }}</span></a></li>
+                <li role="presentation" class="{{ Request::is('users/*/followers') ? 'active' : '' }}"><a href="{{ route('users.followers', ['id' => $user->id]) }}">Followers <span class="badge">{{ $count_followers }}</span></a></li>
+            </ul>
+			
+            @include('users.users', ['users' => $users])
+			
+        </div>
 
 @endsection

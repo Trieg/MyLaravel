@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+//マイグレーション名をキャメルケースに変換したものがクラス名になる
 class CreateUsersTable extends Migration
 {
     /**
@@ -38,3 +39,15 @@ class CreateUsersTable extends Migration
         Schema::drop('users');
     }
 }
+
+//WHERE節（SELECT文）で条件に入れるカラムには、indexを作ったほうがよい
+//ただし1000件以内は、たいして影響ないので、後で考えるでOK
+//indexでまず絞り込み、その上であいまい検索などを行う
+
+//INSERT（新規）が多くなるときは注意せよ。検索は早いが、更新は遅い
+
+//副キーの存在
+//index key（索引）、unique key（単一）
+
+//Userが増えすぎた時のために、DBをスケールアウト出来る構築を考える
+//つまり、UserとGlobalのDBは分ける。UserとGlobalでの依存関係を無くす。

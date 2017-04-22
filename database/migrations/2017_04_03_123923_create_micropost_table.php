@@ -3,8 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-//マイグレーション名をキャメルケースに変換したものがクラス名になる
-class CreateMicropostsTable extends Migration{
+
+class CreateMicropostTable extends Migration{
 
 	/**
 	 * マイグレーション実行
@@ -13,12 +13,12 @@ class CreateMicropostsTable extends Migration{
 	 */
 	public function up(){
 
-		Schema::create( 'microposts', function (Blueprint $table){
+		Schema::create( 'micropost', function (Blueprint $table){
 
 			$table -> increments( 'id' );
 
 			$table -> integer( 'user_id' ) -> unsigned() -> index();
-			$table -> foreign( 'user_id' ) -> references( 'id' ) -> on( 'users' ) -> onDelete( 'cascade' );
+			//$table -> foreign( 'user_id' ) -> references( 'id' ) -> on( 'users' ) -> onDelete( 'cascade' );
 
 			$table -> string( 'title' );
 			$table -> string( 'content' );
@@ -31,7 +31,7 @@ class CreateMicropostsTable extends Migration{
 
 	public function down(){
 
-		Schema::drop( 'microposts' );
+		Schema::drop( 'micropost' );
 
 	}
 

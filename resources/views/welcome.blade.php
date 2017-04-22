@@ -12,9 +12,9 @@
 
 		@if(! isset($auth_bool))
 
-		{!! Form::open(['route' => 'microposts.store']) !!}
+		{!! Form::open(['route' => 'micropost.store']) !!}
 
-		@include('microposts.form_microposts')
+		@include('micropost.form_micropost')
 
 		{!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
 		{!! Form::close() !!}
@@ -24,16 +24,16 @@
 		<?php //編集のbool(true)チェック  ?>
 		@if(isset($auth_bool))
 
-		{!! Form::model($micropost, ['route' => ['microposts.update', $micropost->id], 'method' => 'put']) !!}
+		{!! Form::model($micropost, ['route' => ['micropost.update', $micropost->id], 'method' => 'put']) !!}
 
-		@include('microposts.form_microposts')
+		@include('micropost.form_micropost')
 
 		{!! Form::submit('Update', ['class' => 'btn btn-primary btn-info']) !!}
 		{!! Form::close() !!}
 
 		<?php //destoroy ?>
 		<br>
-		{!! Form::model($micropost, ['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
+		{!! Form::model($micropost, ['route' => ['micropost.destroy', $micropost->id], 'method' => 'delete']) !!}
 		{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
 		{!! Form::close() !!}
 		@endif
@@ -78,7 +78,7 @@
 
 						@if (Auth::user()->id == $micropost->user_id)
 
-						{!! Form::open(['route' => ['microposts.edit', $micropost->id], 'method' => 'get']) !!}
+						{!! Form::open(['route' => ['micropost.edit', $micropost->id], 'method' => 'get']) !!}
 						{!! Form::submit('Update', ['class' => 'btn btn-info btn-xs']) !!}
 						{!! Form::close() !!}
 

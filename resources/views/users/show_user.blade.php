@@ -2,13 +2,6 @@
 @extends('layouts.p_show')
 @section('tab')
 
-<?php
-//$aaa = $auth_user;
-//$aaa = $user;
-$aaa = $microposts;
-
-//dd( $aaa );
-?>
 
 <ul>
 

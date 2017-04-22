@@ -7,12 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Relation extends Model{
 
 	protected $table	 = 'relation';
-	protected $fillable	 = [ 'user_id', 'other_id', 'follow', 'star' ];
-
-	//belongsToManyで中間テーブルの場合は、子側は何も記述しない
+	protected $fillable	 = [ 'user_id', 'other_id', 'dm','done' ];
 
 	public function user(){
-		return $this -> belongsTo( User::class ); //依存性（hasManyに対応）
+		return $this -> belongsTo( User::class );
 
 	}
 

@@ -11,78 +11,71 @@ use App\Http\Controllers\Controller;
 
 class UsersController extends Controller{
 
-	//------------------------------
-
 	public function all(){
 
 		$users = User::paginate( 5 );
 
 		$date = [
-			'users'=>$users
+			'users' => $users
 		];
-		return view( 'users.all', $date);
-	}
+		return view( 'users.show_user_all', $date );
 
-	//------------------------------
+	}
 
 	public function show( $id ){
 
-		$auth_user	 = \Auth::user();// -> id;
-		$user		 = User::find( $id );
 
-		//$microposts			 = Micropost::wherein( 'user_id', $followings ) -> orderBy( 'created_at', 'desc' ) -> paginate( 10 );
-		$microposts			 = $user -> microposts() -> orderBy( 'created_at', 'desc' ) -> paginate( 10 );
-		$count_microposts	 = $user -> microposts() -> count();
+		extract( $this -> init_var( $id ) );
 
+		$microposts = $your -> micropost() -> orderBy( 'created_at', 'desc' ) -> paginate( 10 );
+		
+		$count_microposts=$your -> micropost() ->count();
+		
+		//viewへの変数渡しはcompact()しないで、変数名を独立させて、リファクタリングを楽にする
 		$data = [
-			//'followers'		 => $followers,
-			//'followings'		 => $followings,
-			'auth_user'			 => $auth_user,
-			'user'				 => $user,
+			'auth_user'			 => $auth,
+			'user'				 => $your,
 			'microposts'		 => $microposts,
 			'count_microposts'	 => $count_microposts,
+			//'count_follow'		 => $count_follow,
+			//'count_star'		 => $count_star,
+			//'match_follow'		 => $match_follow
 		];
 
-		return view( 'users.show', $data );
+		return view( 'users.show_user', $data );
 
 	}
-}
-	//------------------------------
 
-/*
-	  public function followings( $id ){
-		  
-	  $user		 = User::find( $id );
-	  
-	  $followings	 = 0;
+	public function auth_to_you_like( $id ){
 
-	  $data = [
-	  'user'			 => $user,
-	  'wings_users'	 => $followings,
-	  ];
+		$user				 = User::find( $id );
+		$auth_to_you_like	 = $user -> auth_to_you_like() -> paginate( 10 );
 
-	  //$data += $this -> counts( $user );
+		$data = [
+			'user'	 => $user,
+			'users'	 => $auth_to_you_like,
+		];
 
-	  return view( 'users.followings', $user );
+		$data += $this -> counts( $user );
 
-	  }
+		return view( 'users.followings', $data );
 
-	  public function followers( $id ){
-	  $user		 = User::find( $id );
-	  $followers	 = 0;
+	}
 
-	  $data = [
-	  'user'		 => $user,
-	  'wers_users' => $followers,
-	  ];
+	public function you_to_auth_like( $id ){
 
-	  $data += $this -> counts( $user );
+		$user				 = User::find( $id );
+		$you_to_auth_like	 = $user -> you_to_auth_like() -> paginate( 10 );
 
-	  return view( 'users.followers', $data );
+		$data = [
+			'user'	 => $user,
+			'users'	 => $you_to_auth_like,
+		];
 
-	  }
+		$data += $this -> counts( $user );
 
+		return view( 'users.followers', $data );
 
-	//------------------------------
+	}
 
 }

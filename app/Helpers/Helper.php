@@ -10,6 +10,7 @@ class Helper{
 	 * @param string $value
 	 * @return string
 	 */
+	
 	public static function create_counter(){
 		$count	 = 0;
 		$sum	 = function() use (&$count){ //無名関数で、スコープ外の変数を縛ると、メモリに残る！
@@ -30,9 +31,6 @@ class Helper{
 		echo $string;
 
 	}
-
-	//emptyは、0、”"、nullがセットされていても、falseと評価。
-	//issetは、nullの場合にfalseと評価
 	
 	public static function dg( $var = null ){
 

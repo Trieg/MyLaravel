@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Micropost extends Model{
 
-	protected $table	 = 'microposts';
+	protected $table	 = 'micropost';
 	protected $fillable	 = [ 'user_id', 'title', 'content', 'status' ];
 
 	public function user(){
-		return $this -> belongsTo( User::class ); //依存性（hasManyに対応）
+		return $this -> belongsTo( User::class );
 
 	}
 

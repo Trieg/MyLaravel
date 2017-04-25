@@ -22,6 +22,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 	protected $fillable	 = [ 'name', 'email', 'password' ];
 	protected $hidden	 = [ 'password', 'remember_token' ];
 
+	//--------------------DB--------------------
+	
 	//$user->micropost()
 	public function micropost(){
 
@@ -48,7 +50,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
 	}
 
-	//--------------------
+	//--------------------Like--------------------
 	
 	public function is_like( $user_id ){
 		
@@ -89,5 +91,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 		}
 
 	}
+	
+	public function feed_microposts()
+    {
+        $like_user_ids = $this->auth_to_you_like()->lists('users.id')->toArray();
+        $like_user_ids[] = $this->id;
+        return Micropost::whereIn('user_id', $like_user_ids);
+    }
 
 }

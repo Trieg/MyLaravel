@@ -42,7 +42,6 @@
 </ul>
 
 <?php //ペジネーション ?>
-
 {!! $microposts->render() !!}
 
 @endsection

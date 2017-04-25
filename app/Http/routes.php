@@ -34,8 +34,8 @@ Route::group( [ 'middleware' => 'auth' ], function (){
         Route::post('like', 'LikeController@store')->name('like.store');
         Route::delete('like', 'LikeController@destroy')->name('like.delete');
 		
-        Route::get('like', 'UsersController@auth_to_you_like')->name('like.auth_to_you_likeh');
-        Route::get('like', 'UsersController@you_to_auth_like')->name('lile.you_to_auth_like');
+        Route::get('like', 'LikeController@auth_to_you_like')->name('like.auth_to_you_like');
+        Route::get('like-other', 'LikeController@you_to_auth_like')->name('lile.you_to_auth_like');
 	} );
 } );
 

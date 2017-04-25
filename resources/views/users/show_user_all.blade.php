@@ -31,9 +31,8 @@
 @endforeach
 </ul>
 
-<?php // 
-//{!! $users->render() !!}
-?>
+<?php //ペジネーション ?>
+{!! $users->render() !!}
 
 @endif
 

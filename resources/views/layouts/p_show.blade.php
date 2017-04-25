@@ -34,10 +34,10 @@
 						<span class="badge">{{ $count_micropost }}</span></a></li>
 								
                 <li>
-					<a href="{{ route('root.index', ['id' => $user->id]) }}">Followings
+					<a href="{{ route('like.auth_to_you_like', ['id' => $user->id]) }}">Followings
 						<span class="badge">{{ $count_auth_to_you_like }}</span></a></li>
                 <li>
-					<a href="{{ route('root.index', ['id' => $user->id]) }}">Followers
+					<a href="{{ route('lile.you_to_auth_like', ['id' => $user->id]) }}">Followers
 						<span class="badge">{{ $count_you_to_auth_like }}</span></a></li>
             </ul>
 

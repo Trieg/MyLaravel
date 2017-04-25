@@ -1,4 +1,9 @@
 
+<?php
+
+use App\User; //model
+?>
+
 @extends('layouts.app')
 @section('content')
 
@@ -47,6 +52,10 @@
 
 			@foreach ($microposts as $micropost)
 
+			<?php
+			$user = User::find( $micropost -> user_id );
+			?>
+
 			<li class="media">
 
 				<div class="media-left">
@@ -55,8 +64,7 @@
 
 				<div class="media-body">
 
-					<div>
-						<?php //ユーザー名 ?>
+					 <div>
 						{!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!} 
 						<span class="text-muted">created at {{ $micropost->created_at }}</span>
 					</div>
@@ -74,7 +82,6 @@
 					</div>
 
 					<div>
-						<?php //update  ?>
 
 						@if (Auth::user()->id == $micropost->user_id)
 

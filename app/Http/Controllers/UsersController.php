@@ -48,36 +48,5 @@ class UsersController extends Controller{
 
 	}
 
-	public function auth_to_you_like( $id ){
-
-		$user				 = User::find( $id );
-		$auth_to_you_like	 = $user -> auth_to_you_like() -> paginate( 10 );
-
-		$data = [
-			'user'	 => $user,
-			'users'	 => $auth_to_you_like,
-		];
-
-		$data += $this -> counts( $user );
-
-		return view( 'users.followings', $data );
-
-	}
-
-	public function you_to_auth_like( $id ){
-
-		$user				 = User::find( $id );
-		$you_to_auth_like	 = $user -> you_to_auth_like() -> paginate( 10 );
-
-		$data = [
-			'user'	 => $user,
-			'users'	 => $you_to_auth_like,
-		];
-
-		$data += $this -> counts( $user );
-
-		return view( 'users.followers', $data );
-
-	}
 
 }
